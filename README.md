@@ -42,3 +42,7 @@ The prediction launcher reads local backbone snapshots under `models/` and accep
 - [Native CLIP follow-up](supplementary/native-clip/README.md)
 - [Main-table scores](docs/results.json)
 - `docs/` is a build-free GitHub Pages site. Its paths are relative to the repository site root.
+
+## License
+
+The project code is available under [Apache-2.0](LICENSE). The authors release the [paper](docs/paper.pdf) under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
