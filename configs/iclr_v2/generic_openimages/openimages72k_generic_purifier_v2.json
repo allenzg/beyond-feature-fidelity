@@ -1,0 +1,86 @@
+{
+  "canonical_reference": {
+    "checkpoint": "data/project/AAAI_DUG_Paper_Results_20260722/01_checkpoints/Stage1_Purifier/structure_preserving_dual_stream_vae.pth",
+    "config_snapshot": "reports/iclr_v2/generic_openimages/canonical_purifier_config_snapshot.json",
+    "global_step": 8000,
+    "variant": "native_1024_curriculum"
+  },
+  "curriculum": {
+    "min_phase_d_steps": 2000,
+    "min_steps_before_early_stop": 8000,
+    "phase_A_steps": 0,
+    "phase_B_steps": 4000,
+    "phase_C_steps": 4000,
+    "phase_D_steps": 4000,
+    "total_max_steps": 12000
+  },
+  "data": {
+    "cache_root": "cache/iclr_v2/generic_openimages/dino_packed",
+    "corruption_protocol": "configs/iclr_v2/corruption_protocol.json",
+    "images_dir": "datasets/representation_train/openimages72k/images",
+    "manifest": "data/manifests/iclr_v2/openimages72k_generic_purifier_manifest.jsonl"
+  },
+  "description": "Task-agnostic generic purifier trained on OpenImages72K DINO clean/corrupt feature pairs with canonical purifier architecture/loss/optimizer/schedule.",
+  "experiment_id": "openimages72k_generic_purifier_v2",
+  "kl_schedule": {
+    "nuisance_scale": 1.0,
+    "warmup_fraction_of_phase_d": 0.3
+  },
+  "losses": {
+    "cycle": 0.3,
+    "global_cos": 0.1,
+    "kl": 0.005,
+    "min_clean_identity": 0.01,
+    "min_residual_l2": 0.02,
+    "relation": 0.2,
+    "restoration_cosine": 1.0,
+    "restoration_mse": 1.0,
+    "restoration_smooth_l1": 0.5,
+    "tc": 0.02
+  },
+  "model": {
+    "activation": "gelu",
+    "content_hidden": 1024,
+    "content_latent": 128,
+    "decoder_hidden": 1024,
+    "dropout": 0.0,
+    "identity_init": true,
+    "identity_init_scale": 0.001,
+    "nuisance_hidden": 512,
+    "nuisance_latent": 64,
+    "use_layernorm": true,
+    "variant": "native_1024_curriculum"
+  },
+  "optim": {
+    "base_lr": 0.0003,
+    "betas": [
+      0.9,
+      0.95
+    ],
+    "grad_clip": 1.0,
+    "optimizer": "adamw",
+    "schedule": "cosine",
+    "warmup_steps": 200,
+    "weight_decay": 0.01
+  },
+  "output_root": "outputs/iclr_v2/generic_openimages/purifier",
+  "protocol": "ICLR-DUG-V2",
+  "relation": {
+    "n_patches": 96
+  },
+  "tc_schedule": {
+    "delay_fraction_of_phase_d": 0.5,
+    "ramp_fraction_of_phase_d": 0.2
+  },
+  "training": {
+    "checkpoint_every": 500,
+    "effective_batch_size": 32,
+    "eval_every": 500,
+    "num_workers": 4,
+    "per_gpu_batch_size": 32,
+    "persistent_workers": true,
+    "pin_memory": true,
+    "seed": 123,
+    "val_max_batches": 16
+  }
+}

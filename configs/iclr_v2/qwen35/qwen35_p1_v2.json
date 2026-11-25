@@ -1,0 +1,83 @@
+{
+  "canonical_seed": 123,
+  "checkpoints": {
+    "init_projector": null,
+    "purifier": null
+  },
+  "data": {
+    "clean_cache_root": "cache/iclr_v2/dino",
+    "corrupt_cache_root": "cache/iclr_v2/dino",
+    "corruption_protocol": "configs/iclr_v2/corruption_protocol.json",
+    "manifest": "data/manifests/iclr_v2/qwen35_train_clean_native.jsonl",
+    "paired_manifest": "data/manifests/iclr_v2/qwen35_train_clean_native.jsonl",
+    "target_cache_root": "cache/iclr_v2/native/qwen35/train",
+    "test_ids_json": "data/manifests/iclr_v2/test_ids.json",
+    "train_ids_json": "data/manifests/iclr_v2/train_ids.json",
+    "val_ids_json": "data/manifests/iclr_v2/val_ids.json"
+  },
+  "description": "Qwen3.5 V2 clean native projector on 72,140 train samples.",
+  "evaluation": {
+    "benchmarks": [
+      "GQA",
+      "TallyQA",
+      "POPE"
+    ],
+    "bootstrap_resamples": 5000,
+    "primary": "GQA",
+    "v2_scorer": "scripts/iclr_v2/eval_gqa.py"
+  },
+  "experiment_id": "qwen35_P1_V2_clean_interface",
+  "method": "Q35-P1",
+  "model": {
+    "activation": "gelu",
+    "dropout": 0.0,
+    "hidden_dim": 4096,
+    "identity_init_scale": 0.02,
+    "input_dim": 1024,
+    "kind": "mlp",
+    "output_dim": 4096,
+    "use_layernorm": false
+  },
+  "model_family": "Qwen3.5-9B",
+  "optim": {
+    "betas": [
+      0.9,
+      0.95
+    ],
+    "grad_clip": 1.0,
+    "lr": 0.0001,
+    "optimizer": "adamw",
+    "scheduler": "none",
+    "weight_decay": 0.01
+  },
+  "output_root": "outputs/iclr_v2/qwen35/p1_clean_interface",
+  "protocol": "ICLR-DUG-V2",
+  "report_root": "reports/iclr_v2/qwen35/p1_clean_interface",
+  "seeds": [
+    42,
+    123,
+    3407
+  ],
+  "training": {
+    "align_features_to_target_tokens": true,
+    "alignment_operator": "deterministic_linear_resample_DINO_sequence_to_native_qwen_token_count",
+    "checkpoint_every": 500,
+    "effective_batch_size": 64,
+    "enabled": true,
+    "eval_every": 500,
+    "input_mode": "raw_clean_only",
+    "gradient_accumulation_steps": 1,
+    "max_steps": 750,
+    "min_steps": 375,
+    "num_workers": 8,
+    "patience": 6,
+    "per_gpu_batch_size": 64,
+    "persistent_workers": true,
+    "pin_memory": true,
+    "prefetch_factor": 2,
+    "precision": "bf16",
+    "target": "clean_native_qwen35_visual_tokens",
+    "val_from_train_count": 1024,
+    "val_from_train_if_missing": true
+  }
+}

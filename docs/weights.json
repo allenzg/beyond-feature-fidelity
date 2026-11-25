@@ -1,0 +1,54 @@
+[
+  {
+    "path": "data/project/AAAI_DUG_Paper_Results_20260722/01_checkpoints/Stage1_Purifier/structure_preserving_dual_stream_vae.pth",
+    "original_sha256": "ab84377489f016b75119a04628625a3e934be1809a88f718cc932d6db0d24394",
+    "sha256": "dd25fa97a0ea51807faa832e7b7745acebe0f37231e2ef0619a2cd89962b5485",
+    "bytes": 22101701,
+    "seed": 123,
+    "step": 8000,
+    "output_shape": [
+      1,
+      8,
+      1024
+    ]
+  },
+  {
+    "path": "outputs/iclr_v2/llava15/m6_purified_adapted/seed123/best.pt",
+    "original_sha256": "33a0c8cb882105134bc5bfe7339ab13dafa5c2e75c61748a362f6f887809f463",
+    "sha256": "252d7258c9b71c27efa9e2bbbac1239fd44e5ba546d75c9827a8beb4fb6ee4f9",
+    "bytes": 83921279,
+    "seed": 123,
+    "step": 750,
+    "output_shape": [
+      1,
+      8,
+      4096
+    ]
+  },
+  {
+    "path": "outputs/iclr_v2/llava15/m7_raw_adapted/seed123/best.pt",
+    "original_sha256": "ea974be5ead2e8aaea28096826f0c65ddd499f4122c7c868e0ac9aa63e49c951",
+    "sha256": "1083d8f45ec04e3ac59d262f514b3e1bb064053bdc5e7a7f859927c8c6ddcf64",
+    "bytes": 83921279,
+    "seed": 123,
+    "step": 750,
+    "output_shape": [
+      1,
+      8,
+      4096
+    ]
+  },
+  {
+    "path": "outputs/iclr_v2/llava15/p1/seed123/best.pt",
+    "original_sha256": "01d04d868fda4d67596ad93e90f956238d2e4a8ca3cb2adba8747d2de88ccf80",
+    "sha256": "e544984c5326f96a2fe6e03b098c7f223d0f040f60d6907eaad2db235f8836ea",
+    "bytes": 83921279,
+    "seed": 123,
+    "step": 750,
+    "output_shape": [
+      1,
+      8,
+      4096
+    ]
+  }
+]

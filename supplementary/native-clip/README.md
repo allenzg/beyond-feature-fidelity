@@ -1,0 +1,3 @@
+# Native CLIP follow-up
+
+A subsequent experiment used the original LLaVA-1.5 vision pathway on a separate cohort of 2,400 GQA images. The table reports percentage-point differences and paired image-cluster bootstrap intervals conditional on seeds 42, 123 and 3407. At the pretrained-projector starting point, recovery changed corrupted-input frozen accuracy by −0.125 pp (95% CI −0.341 to +0.096). The clean-only and mixed adaptation interactions include zero. The 3,000- and 12,000-step conditions extend clean-token regression on targets from the pretrained projector. See the accompanying CSV for all contrasts.

@@ -1,0 +1,79 @@
+{
+  "canonical_seed": 123,
+  "checkpoints": {
+    "frozen_projector": "outputs/iclr_v2/onevision2/p1_clean_interface/seed123/best.pt",
+    "init_projector": "outputs/iclr_v2/onevision2/p1_clean_interface/seed123/best.pt",
+    "purifier": "data/project/AAAI_DUG_Paper_Results_20260722/01_checkpoints/Stage1_Purifier/structure_preserving_dual_stream_vae.pth"
+  },
+  "data": {
+    "clean_cache_root": "cache/iclr_v2/dino",
+    "corrupt_cache_root": "cache/iclr_v2/dino",
+    "corruption_protocol": "configs/iclr_v2/corruption_protocol.json",
+    "manifest": "data/manifests/iclr_v2/onevision2_train_corrupt_minimal.jsonl",
+    "paired_manifest": "data/manifests/iclr_v2/onevision2_train_corrupt_minimal.jsonl",
+    "target_cache_root": "cache/iclr_v2/native/onevision2/train",
+    "test_ids_json": "data/manifests/iclr_v2/test_ids.json",
+    "train_ids_json": "data/manifests/iclr_v2/train_ids.json",
+    "val_ids_json": "data/manifests/iclr_v2/val_ids.json"
+  },
+  "description": "OneVision-2 V2 purified frozen eval-only using canonical P1 seed123.",
+  "evaluation": {
+    "benchmarks": [
+      "GQA",
+      "TallyQA",
+      "POPE"
+    ],
+    "bootstrap_resamples": 5000,
+    "primary": "GQA",
+    "v2_scorer": "scripts/iclr_v2/eval_gqa.py"
+  },
+  "experiment_id": "onevision2_M4_V2_purified_frozen",
+  "method": "OV2-M4",
+  "model": {
+    "activation": "gelu",
+    "dropout": 0.0,
+    "hidden_dim": 4096,
+    "identity_init_scale": 0.02,
+    "input_dim": 1024,
+    "kind": "mlp",
+    "output_dim": 4096,
+    "use_layernorm": false
+  },
+  "model_family": "LLaVA-OneVision-2-8B-Instruct",
+  "optim": {
+    "betas": [
+      0.9,
+      0.95
+    ],
+    "grad_clip": 1.0,
+    "lr": 0.0001,
+    "optimizer": "adamw",
+    "scheduler": "none",
+    "weight_decay": 0.01
+  },
+  "output_root": "outputs/iclr_v2/onevision2/m4_purified_frozen",
+  "protocol": "ICLR-DUG-V2",
+  "report_root": "reports/iclr_v2/onevision2/m4_purified_frozen",
+  "seeds": [
+    42,
+    123,
+    3407
+  ],
+  "training": {
+    "align_features_to_target_tokens": true,
+    "alignment_operator": "deterministic_linear_resample_DINO_sequence_to_native_onevision2_token_count",
+    "effective_batch_size": 64,
+    "enabled": false,
+    "gradient_accumulation_steps": 1,
+    "input_mode": "purified_clean_corrupt_eval",
+    "note": "No training; evaluate frozen canonical OneVision2-P1 seed123 with shared V2 train corrupt_minimal cache.",
+    "num_workers": 8,
+    "per_gpu_batch_size": 64,
+    "persistent_workers": true,
+    "pin_memory": true,
+    "prefetch_factor": 2,
+    "target": "clean_native_onevision2_visual_tokens",
+    "val_from_train_count": 1024,
+    "val_from_train_if_missing": true
+  }
+}

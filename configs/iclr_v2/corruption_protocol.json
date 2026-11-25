@@ -1,0 +1,136 @@
+{
+  "protocol_id": "ICLR-DUG-V2-corruption-v1",
+  "created_at": "2026-09-20T17:45:00+08:00",
+  "seed": 20260920,
+  "image_format": "png",
+  "resize_policy": {
+    "enabled": false,
+    "note": "Keep source pixels unchanged for corruption generation; model processors may resize independently."
+  },
+  "train_severities": {
+    "overexposure": [
+      1,
+      2
+    ],
+    "underexposure": [
+      1,
+      2
+    ],
+    "gaussian_blur": [
+      1,
+      2
+    ],
+    "gaussian_noise": [
+      1,
+      2
+    ],
+    "jpeg": [
+      1,
+      2
+    ]
+  },
+  "validation_severities": {
+    "overexposure": [
+      1,
+      2
+    ],
+    "underexposure": [
+      1,
+      2
+    ],
+    "gaussian_blur": [
+      1,
+      2
+    ],
+    "gaussian_noise": [
+      1,
+      2
+    ],
+    "jpeg": [
+      1,
+      2
+    ]
+  },
+  "heldout_heavy_severities": {
+    "overexposure": [
+      3
+    ],
+    "underexposure": [
+      3
+    ],
+    "gaussian_blur": [
+      3
+    ],
+    "gaussian_noise": [
+      3
+    ],
+    "jpeg": [
+      3
+    ]
+  },
+  "parameters": {
+    "overexposure": {
+      "1": {
+        "brightness_factor": 1.35
+      },
+      "2": {
+        "brightness_factor": 1.75
+      },
+      "3": {
+        "brightness_factor": 2.25
+      }
+    },
+    "underexposure": {
+      "1": {
+        "brightness_factor": 0.75
+      },
+      "2": {
+        "brightness_factor": 0.55
+      },
+      "3": {
+        "brightness_factor": 0.35
+      }
+    },
+    "gaussian_blur": {
+      "1": {
+        "radius": 1.0
+      },
+      "2": {
+        "radius": 2.0
+      },
+      "3": {
+        "radius": 4.0
+      }
+    },
+    "gaussian_noise": {
+      "1": {
+        "sigma": 8.0
+      },
+      "2": {
+        "sigma": 16.0
+      },
+      "3": {
+        "sigma": 32.0
+      }
+    },
+    "jpeg": {
+      "1": {
+        "quality": 70
+      },
+      "2": {
+        "quality": 45
+      },
+      "3": {
+        "quality": 25
+      }
+    }
+  },
+  "rules": {
+    "train_excludes_heldout_heavy": true,
+    "shared_corruption_instances_across_models": true,
+    "deterministic_noise_seed": "sha256(protocol_id, sample_id, corruption, severity)",
+    "no_downstream_labels_used_for_projector_or_purifier_training": true,
+    "validation_uses_train_medium_severities": true,
+    "heldout_heavy_only_for_test_evaluation": true
+  }
+}

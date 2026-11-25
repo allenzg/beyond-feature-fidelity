@@ -1,0 +1,80 @@
+{
+  "canonical_seed": 123,
+  "checkpoints": {
+    "init_projector": null,
+    "purifier": null
+  },
+  "data": {
+    "clean_cache_root": "cache/iclr_v2/dino",
+    "corrupt_cache_root": "cache/iclr_v2/dino",
+    "corruption_protocol": "configs/iclr_v2/corruption_protocol.json",
+    "manifest": "data/manifests/iclr_v2/train_clean_native.jsonl",
+    "paired_manifest": "data/manifests/iclr_v2/train_clean_native.jsonl",
+    "target_cache_root": "cache/iclr_v2/native/llava15/train",
+    "test_ids_json": "data/manifests/iclr_v2/test_ids.json",
+    "train_ids_json": "data/manifests/iclr_v2/train_ids.json",
+    "val_ids_json": "data/manifests/iclr_v2/val_ids.json"
+  },
+  "description": "V2 clean-interface projector trained from clean DINO features to clean LLaVA-1.5 native visual tokens.",
+  "evaluation": {
+    "benchmarks": [
+      "GQA",
+      "TallyQA",
+      "POPE"
+    ],
+    "bootstrap_resamples": 5000,
+    "primary": "GQA",
+    "v2_scorer": "scripts/iclr_v2/eval_gqa.py"
+  },
+  "experiment_id": "llava15_P1_V2_clean_interface",
+  "method": "P1-V2",
+  "model": {
+    "activation": "gelu",
+    "dropout": 0.0,
+    "hidden_dim": 4096,
+    "identity_init_scale": 0.02,
+    "input_dim": 1024,
+    "kind": "mlp",
+    "output_dim": 4096,
+    "use_layernorm": false
+  },
+  "model_family": "LLaVA-1.5-7B",
+  "optim": {
+    "betas": [
+      0.9,
+      0.95
+    ],
+    "grad_clip": 1.0,
+    "lr": 0.0001,
+    "optimizer": "adamw",
+    "scheduler": "none",
+    "weight_decay": 0.01
+  },
+  "output_root": "outputs/iclr_v2/llava15/p1",
+  "protocol": "ICLR-DUG-V2",
+  "report_root": "reports/iclr_v2/llava15/p1_clean_interface",
+  "seeds": [
+    42,
+    123,
+    3407
+  ],
+  "training": {
+    "checkpoint_every": 500,
+    "effective_batch_size": 64,
+    "eval_every": 500,
+    "gradient_accumulation_steps": 1,
+    "input_mode": "raw_clean_only",
+    "max_steps": 750,
+    "min_steps": 375,
+    "num_workers": 8,
+    "patience": 6,
+    "per_gpu_batch_size": 64,
+    "persistent_workers": true,
+    "pin_memory": true,
+    "precision": "bf16",
+    "prefetch_factor": 2,
+    "target": "clean_native_llava15_visual_tokens",
+    "val_from_train_count": 1024,
+    "val_from_train_if_missing": true
+  }
+}
