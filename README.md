@@ -3,16 +3,17 @@
 **Recovery and Readout Adaptation in Multimodal Large Language Models**  
 Zhiliang Zhu, jiazheng Huang, Chubin Peng, Yang Zijie, Puyue Wang, Yuquan Xue, Dawei Zhao
 
-[Paper](docs/paper.pdf) · [Project page](https://allenzg.github.io/beyond-feature-fidelity/) · [OpenReview](https://openreview.net/forum?id=1ki2Qs08aF) · [Citation](docs/citation.bib)
+[Paper](docs/paper.pdf) · [Hugging Face weights](https://huggingface.co/allenzhengzz/beyond-feature-fidelity) · [Project page](https://allenzg.github.io/beyond-feature-fidelity/) · [OpenReview](https://openreview.net/forum?id=1ki2Qs08aF) · [Citation](docs/citation.bib)
 
 We compare raw and recovered visual features under frozen and adapted replacement readouts for four multimodal language models. The main table contains nine benchmarks. The static project page includes all 144 scores and links to a machine-readable copy.
 
 ## Run a feature-level example
 
-From this directory, with Python 3.12 and the companion model directory alongside the checkout, run
+From this directory, download the four checkpoints into a sibling directory using the Hugging Face CLI. Then run the CPU example with Python 3.12.
 
 ```sh
-python -m pip install 'torch>=2.6'
+python -m pip install 'torch>=2.6' huggingface_hub
+hf download allenzhengzz/beyond-feature-fidelity --local-dir ../huggingface
 python check_features.py --weights ../huggingface --family llava15 --condition m6
 python scripts/iclr_v2/test_eval_gqa.py
 ```
