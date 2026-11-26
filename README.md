@@ -3,7 +3,7 @@
 **Recovery and Readout Adaptation in Multimodal Large Language Models**  
 Zhiliang Zhu, Jiazheng Huang, Chubin Peng, Zijie Yang, Puyue Wang, Yuquan Xue, Dawei Zhao
 
-[Paper](docs/paper.pdf) · [Hugging Face weights](https://huggingface.co/allenzhengzz/beyond-feature-fidelity) · [Project page](https://allenzg.github.io/beyond-feature-fidelity/) · [OpenReview](https://openreview.net/forum?id=1ki2Qs08aF) · [Citation](docs/citation.bib)
+[Paper](docs/paper.pdf) · [Hugging Face weights](https://huggingface.co/allenzhengzz/beyond-feature-fidelity) · [Project page](https://allenzg.github.io/beyond-feature-fidelity/) · [Citation](docs/citation.bib)
 
 We compare raw and recovered visual features under frozen and adapted replacement readouts for four multimodal language models. The main table contains nine benchmarks. The static project page includes all 144 scores and links to a machine-readable copy.
 
