@@ -31,6 +31,35 @@ fetch('results.json').then(response => { if (!response.ok) throw new Error('Resu
     document.querySelector('#chart').setAttribute('aria-label', model + ' ' + benchmarkSelect.value + ': ' + entries.map(([name,scores]) => name + ' ' + scores[index]).join(', '));
     document.querySelector('#chart-note').textContent = model + ' · ' + benchmarkSelect.value + ' · scores in percent · zero-based axis. Benchmark-specific scoring follows the paper.';
   }
+  const contrastSelect = document.querySelector('#contrast-select');
+  const benchmarks = [...benchmarkSelect.options].map(o => o.textContent);
+  function renderHeatmap() {
+    const [a, b] = contrastSelect.value.split(',').map(Number);
+    const grid = document.querySelector('#heatmap');
+    const diffs = Object.entries(results).map(([model, conds]) => {
+      const rows = Object.values(conds);
+      return [model, benchmarks.map((_, i) => Number(rows[a][i]) - Number(rows[b][i]))];
+    });
+    const max = Math.max(...diffs.flatMap(([, d]) => d.map(Math.abs))) || 1;
+    const base = [242, 244, 245];
+    const mix = (t, c) => c.map((v, i) => Math.round(base[i] + (v - base[i]) * t));
+    let html = '<div class="hm-head"></div>' + benchmarks.map(n => '<div class="hm-head" role="columnheader">' + n + '</div>').join('');
+    let wins = 0;
+    diffs.forEach(([model, d]) => {
+      html += '<div class="hm-row" role="rowheader">' + model + '</div>';
+      d.forEach((v, i) => {
+        if (v > 0) wins++;
+        const t = Math.min(Math.abs(v) / max, 1);
+        const rgb = mix(t, v >= 0 ? [61, 140, 143] : [201, 138, 138]);
+        const fg = t > 0.6 && v > 0 ? '#fff' : '#1f2d36';
+        html += '<div class="hm-cell" role="cell" title="' + model + ' · ' + benchmarks[i] + '" style="background:rgb(' + rgb.join(',') + ');color:' + fg + '">' + (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(v).toFixed(2) + '</div>';
+      });
+    });
+    grid.innerHTML = html;
+    document.querySelector('#hm-count').textContent = '· ' + wins + ' of 36 pairs positive';
+  }
+  contrastSelect.addEventListener('change', renderHeatmap);
+  renderHeatmap();
   modelSelect.addEventListener('change', render);
   benchmarkSelect.addEventListener('change', render);
   render();

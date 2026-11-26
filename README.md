@@ -1,7 +1,7 @@
 # Beyond Feature Fidelity
 
 **Recovery and Readout Adaptation in Multimodal Large Language Models**  
-Zhiliang Zhu, jiazheng Huang, Chubin Peng, Yang Zijie, Puyue Wang, Yuquan Xue, Dawei Zhao
+Zhiliang Zhu, Jiazheng Huang, Chubin Peng, Zijie Yang, Puyue Wang, Yuquan Xue, Dawei Zhao
 
 [Paper](docs/paper.pdf) · [Hugging Face weights](https://huggingface.co/allenzhengzz/beyond-feature-fidelity) · [Project page](https://allenzg.github.io/beyond-feature-fidelity/) · [OpenReview](https://openreview.net/forum?id=1ki2Qs08aF) · [Citation](docs/citation.bib)
 
